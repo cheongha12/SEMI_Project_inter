@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
-
+<h1>로그인</h1>
+    <form action="LoginServlet" method="post">
+        아이디: <input type="text" name="loginId"><br>
+        비밀번호: <input type="password" name="loginPw"><br>
+        <input type="submit" value="로그인">
+    </form>
 </body>
 </html>
