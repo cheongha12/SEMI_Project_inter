@@ -12,8 +12,9 @@
         아이디: <input type="text" name="loginId"><br>
         비밀번호: <input type="password" name="loginPw"><br>
         <input type="submit" value="로그인">
-        <a href="<%=request.getContextPath() %>/join">
-        <input type="submit" value="회원가입" ></a>
+    </form>
+    <form action="<%=request.getContextPath() %>/join" method="get">
+        <input type="submit" value="회원가입" >
     </form>
 </body>
 </html>
