@@ -1,10 +1,12 @@
-package kh.semi.inter.common.jdbc;
+package kh.semi.inter.jdbc;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
@@ -13,38 +15,31 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class JdbcTemplate {
-	private static DataSource ds = null; // DataSource ds는 아파치톰캣(WAS)가 제공하는 DBCP(DB Connection Pool) 이다.
+	
 	public static Connection getConnection() {
 		Connection conn = null;
+		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		try {
-			Context initCtxt = new InitialContext(); 
-			Context envCtxt = (Context)initCtxt.lookup("java:/comp/env");
-			DataSource ds = (DataSource)envCtxt.lookup("jdbc/inter");
-			conn = ds.getConnection();
-		} catch (Exception e) {
+			// 1. driver 있다면 로딩함. // 없다면 ClassNotFoundException 오류 발생
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			// 2. Connection 객체 생성 // dbms와 연결
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "kh", "kh");
+			if(conn != null) {
+				System.out.println("DB연결 성공!!!!!!!!!!");
+			} else {
+				System.out.println("------ DB 연결 실패------");
+			}
+		} catch (ClassNotFoundException e) {
+			// 1. driver (ojdbc.jar) 없음
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// 2. dbms에 연결 실패
 			e.printStackTrace();
 		}
-		if(conn != null) System.out.println("DBCP 연결성공");
-		else System.out.println("DBCP 연결실패");
 		return conn;
 	}
-//	private static Connection conn = null;
-//	Singleton
-//	public static Connection getConnection() {
-//		Properties prop = new Properties();
-//		try {
-//			String currentPath = JdbcTemplate.class.getResource("./").getPath();
-//			prop.load(new BufferedReader(new FileReader(currentPath+"driver.properties")));
-//			
-//			Class.forName(prop.getProperty("driver"));
-//			conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("username"), prop.getProperty("password"));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		if(conn != null) System.out.println("DB 연결성공");
-//		else System.out.println("DB 연결실패");
-//		return conn;
-//	}
+
 	public static void close(Connection conn) {
 		try {
 			if(conn != null) conn.close();
