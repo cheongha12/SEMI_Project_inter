@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>로그인</h1>
-    <form action="<%=request.getContextPath() %>/login" method="get">
+    <form action="<%=request.getContextPath() %>/login" method="post">
         아이디: <input type="text" name="loginId"><br>
         비밀번호: <input type="password" name="loginPw"><br>
         <input type="submit" value="로그인">

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/inter1")
+@WebServlet({"/inter1", "/main"})
 public class mainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -16,7 +16,7 @@ public class mainServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
