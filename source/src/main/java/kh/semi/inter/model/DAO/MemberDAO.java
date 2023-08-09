@@ -16,7 +16,7 @@ import kh.semi.inter.model.DTO.MemberDTO;
 	    public MemberDTO login(String loginId, String loginPw) {
 	        MemberDTO member = null;
 	        
-	        String query = "SELECT * FROM MEMBER WHERE LOGINID = ? AND LOGINPW = ?";
+	        String query = "SELECT * FROM tb_MEMBER WHERE LOGINID = ? AND LOGINPW = ?";
 	        PreparedStatement pstmt = null;
 	        ResultSet rs = null;
 	        try  {
