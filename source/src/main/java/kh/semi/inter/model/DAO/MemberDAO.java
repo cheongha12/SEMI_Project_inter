@@ -27,12 +27,7 @@ import kh.semi.inter.model.DTO.MemberDTO;
 	        
 	            
 	                if (rs.next()) {
-	                    member = new MemberDTO();
-	                    member.setLoginId(rs.getString("LOGINID"));
-	                    member.setLoginPw(rs.getString("LOGINPW"));
-	                    member.setName(rs.getString("NAME"));
-	                    member.setEmail(rs.getString("EMAIL"));
-	                    member.setPhone(rs.getString("PHONE"));
+	                    member = new MemberDTO(rs.getString("LOGINID"),rs.getString("LOGINPW"));
 	                }
 	            
 	        } catch (Exception e) {

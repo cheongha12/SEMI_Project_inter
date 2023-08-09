@@ -13,9 +13,11 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	
-	
-	
-	
+	public MemberDTO(String loginId, String loginPw) {
+		super();
+		this.loginId = loginId;
+		this.loginPw = loginPw;
+	}
 	public MemberDTO() {
 		super();
 	}

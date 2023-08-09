@@ -26,22 +26,21 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
         String loginPw = request.getParameter("loginPw");
         MemberService service = new MemberService();
         MemberDTO member = service.login(loginId, loginPw);
 
-        if (member != null) {
-            HttpSession session = request.getSession();
+        if (loginPw != null) {
             request.setAttribute("member", member);
            request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response); // 로그인 성공 시 환영 페이지로 이동
         } else {
         	request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response); // 로그인 실패 시 로그인 페이지로 이동
         }
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
     }
 	}
 
