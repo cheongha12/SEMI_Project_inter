@@ -17,12 +17,15 @@ import kh.semi.inter.model.DTO.MemberDTO;
 	        MemberDTO member = null;
 	        
 	        String query = "SELECT * FROM MEMBER WHERE LOGINID = ? AND LOGINPW = ?";
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        try  {
+	        	pstmt = conn.prepareStatement(query);
+	        	pstmt.setString(1, loginId);
+	        	pstmt.setString(2, loginPw);
+	            rs = pstmt.executeQuery();
 	        
-	        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-	            stmt.setString(1, loginId);
-	            stmt.setString(2, loginPw);
 	            
-	            try (ResultSet rs = stmt.executeQuery()) {
 	                if (rs.next()) {
 	                    member = new MemberDTO();
 	                    member.setLoginId(rs.getString("LOGINID"));
@@ -31,7 +34,7 @@ import kh.semi.inter.model.DTO.MemberDTO;
 	                    member.setEmail(rs.getString("EMAIL"));
 	                    member.setPhone(rs.getString("PHONE"));
 	                }
-	            }
+	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

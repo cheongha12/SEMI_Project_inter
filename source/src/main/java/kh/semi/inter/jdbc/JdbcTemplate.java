@@ -24,7 +24,7 @@ public class JdbcTemplate {
 			// 1. driver 있다면 로딩함. // 없다면 ClassNotFoundException 오류 발생
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			// 2. Connection 객체 생성 // dbms와 연결
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "kh", "kh");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "inter", "inter1");
 			if(conn != null) {
 				System.out.println("DB연결 성공!!!!!!!!!!");
 			} else {
