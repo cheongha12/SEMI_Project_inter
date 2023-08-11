@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- 경고창 띄우기 위한 방법 -3 -->
-<jsp:include page="/WEB-INF/view/msg.jsp"/>
+<%-- <jsp:include page="/WEB-INF/view/msg.jsp"/> --%>
 <h1>로그인</h1>
     <form action="<%=request.getContextPath() %>/login" method="post">
         아이디: <input type="text" name="loginId"><br>

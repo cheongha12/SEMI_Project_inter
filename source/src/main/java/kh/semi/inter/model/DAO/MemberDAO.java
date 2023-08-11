@@ -34,6 +34,34 @@ public class MemberDAO {
         return result;
     }
 
+    public int update(Connection conn, MemberDTO dto) {
+		PreparedStatement pstmt = null;
+		String qurey = "update set loginPw=?, name=?, email=?, phone=? where loginId=?";
+		ResultSet rs = null;
+		int result = -1;
+		
+		try {
+			pstmt = conn.prepareStatement(qurey);
+			pstmt.setString(1, dto.getLoginPw());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getEmail());
+			pstmt.setString(5, dto.getPhone());
+			pstmt.setString(6, dto.getLoginId());
+			
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcTemplate.close(pstmt);
+		}
+		
+		return result;
+	}   
+    
+    
+    
+    
+    
     public MemberDTO login(Connection conn, String loginId, String loginPw) {
 		System.out.println("[MemberDAO login ] loginId:"+loginId+", loginPw:"+ loginPw);
 		MemberDTO member = null;

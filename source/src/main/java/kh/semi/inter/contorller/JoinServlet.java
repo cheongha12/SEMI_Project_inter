@@ -24,13 +24,14 @@ public class JoinServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 경고창 띄우기 위한 방법 -2
-		String msg = (String)request.getSession().getAttribute("msg");
-		if(msg != null) {
-			request.getSession().removeAttribute("msg");
-			request.getSession().setAttribute("msg", msg);
-		}
+		/*
+		 * String msg = (String)request.getSession().getAttribute("msg"); if(msg !=
+		 * null) { request.getSession().removeAttribute("msg");
+		 * request.getSession().setAttribute("msg", msg); }
+		 */
 		
-		request.getRequestDispatcher("/WEB-INF/view/join.jsp").forward(request, response);
+		  request.getRequestDispatcher("/WEB-INF/view/join.jsp").forward(request, response);
+		 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

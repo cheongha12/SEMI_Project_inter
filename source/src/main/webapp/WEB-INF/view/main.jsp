@@ -11,10 +11,10 @@
 
 
 <script>
-	var msg = '${msg}';
+	/* var msg = '${msg}';
 	if(msg){
 		alert(msg);
-	}
+	} */
 </script>
 
 <c:choose>
