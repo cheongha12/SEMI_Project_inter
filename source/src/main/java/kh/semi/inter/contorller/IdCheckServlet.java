@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import kh.semi.inter.Service.MemberService;
 
 @WebServlet("/idCheckServlet")
-public class idCheckServlet extends HttpServlet {
+public class IdCheckServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
-    public idCheckServlet() {
+    public IdCheckServlet() {
         super();
     }
 

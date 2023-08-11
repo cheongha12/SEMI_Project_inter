@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet({"/inter1", "/main"})
-public class mainServlet extends HttpServlet {
+public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public mainServlet() {
+    public MainServlet() {
         super();
     }
 
