@@ -22,12 +22,8 @@ public class MemberUpdateServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  MemberDAO memberDAO = new MemberDAO();
-		  MemberService service = new MemberService();
-	        List<MemberDTO> dto = service.selectList(); // 회원 정보 리스트 가져오기
-
-	        request.setAttribute("dto", dto);
-	        request.getRequestDispatcher("/view/memberUpdate.jsp").forward(request, response);
+		 
+	       request.getRequestDispatcher("/WEB-INF/view/memberUpdate.jsp").forward(request, response);
 	    }
 	
 

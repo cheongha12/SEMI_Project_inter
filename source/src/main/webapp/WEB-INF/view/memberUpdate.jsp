@@ -1,26 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>회원가입 리스트</title>
+<meta charset="UTF-8">
+<title>Member Information</title>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>이메일</th>
-            <th>전화번호</th>
-        </tr>
-        <c:forEach items="${registrationList}" var="member">
-            <tr>
-                <td><c:out value="${member.loginId}" /></td>
-                <td><c:out value="${member.name}" /></td>
-                <td><c:out value="${member.email}" /></td>
-                <td><c:out value="${member.phone}" /></td>
-            </tr>
-        </c:forEach>
-    </table>
+	<form method="post" action="UpdateServlet" name="frm">
+		<table align="center" width="600">
+			<tr>
+				<td colspan="2">My Page</td>
+			</tr>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id" value="${loginUser.id }" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="pass"></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name" value="${loginUser.name }"></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				
+				<td><select name="email">
+						<c:choose>
+						
+							<c:when test="${result == 4 }">
+								<option value="A" selected="selected">@naver.com</option>
+								<option value="B">@gmail.com</option>
+								<option value="C">@hanmail.com</option>
+								<option value="D">@kh.com</option>
+							</c:when>
+							<c:otherwise>
+								<option value="A">@naver.com</option>
+								<option value="B" selected="selected">@gmail.com</option>
+								<option value="C" selected="selected">@hanmail.com</option>
+								<option value="D" selected="selected">@kh.com</option>
+							</c:otherwise>
+						</c:choose>
+				</select></td>
+			</tr>
+			
+			<tr>
+				<td>PHONE</td>
+				<td><input type="text" name="phone" value="${loginUser.phone }"></td>
+			</tr>
+			<tr align="center">
+			<td colspan="2"><input type="submit" value="회원정보수정"> &nbsp; <input type="reset" value="취소"></td></tr>
+		</table>
+	</form>
 </body>
 </html>
