@@ -26,9 +26,12 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().removeAttribute("loginId");
+		request.getSession().removeAttribute("loginedInfo");
+		
+		// 경고창 띄우기 위한 방법 -1
 		request.getSession().setAttribute("msg", "로그아웃되었습니다.");
-		response.sendRedirect(request.getContextPath()+"/login");
+		
+		response.sendRedirect(request.getContextPath()+"/main");
 	}
 
 	/**

@@ -36,7 +36,7 @@
 </head>
 <body>
 <!-- 경고창 띄우기 위한 방법 -3 -->
-<%-- <jsp:include page="/WEB-INF/view/msg.jsp"/> --%>
+<jsp:include page="/WEB-INF/view/msg.jsp"/>
 
  <h2>회원 가입</h2>
     <form action="${pageContext.request.contextPath }/join" method="post">

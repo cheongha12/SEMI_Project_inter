@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header class="tourHeader1">
         <div class="gatewayWrapper">
           <div class="gatewayInterGate">
@@ -25,11 +25,18 @@
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <ul class="navbar-nav">
+<c:choose>
+	<c:when test="${not empty loginedInfo }">
+					<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	</c:when>
+	<c:otherwise>
+                  <a href="${pageContext.request.contextPath}/login">로그인</a>
+	</c:otherwise>
+</c:choose>
                 <li class="nav-item active">
-                  <a href="javascript:;" onclick="goLoginGN();">로그인</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://member.interpark.com/signup">회원가입</a>
+                  <a href="${pageContext.request.contextPath}/join">회원가입</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://tour.interpark.com/mypage/">마이페이지</a>

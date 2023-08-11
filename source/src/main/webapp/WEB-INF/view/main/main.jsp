@@ -3,10 +3,9 @@
 <link href="${pageContext.request.contextPath }/resources/css/boby.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/footer.css" rel="stylesheet">
 
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +19,9 @@
   
 </head>
 <body>
+<!-- 경고창 띄우기 위한 방법 -3 -->
+<jsp:include page="/WEB-INF/view/msg.jsp"/>
+
 <jsp:include page="/WEB-INF/view/header/header.jsp"/>
 
 <jsp:include page="/WEB-INF/view/boby/boby.jsp"/>
