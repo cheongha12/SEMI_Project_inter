@@ -61,28 +61,58 @@ public class MemberDAO {
 		
 		return result;
 	}   
-    public int delete(Connection conn, String loginId) {
-		System.out.println("[Member Dao delete] bno:" + loginId);
-		String qurey = "DELETE FROM MEMBER WHERE LOGIN_ID = ? ";
+    public int delete(Connection conn, MemberDTO dto) {
+		System.out.println("[Member Dao delete] bno:" + dto.getLoginId());
+		String qurey = "DELETE FROM MEMBER WHERE loginId = ? ";
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(qurey);
-			pstmt.setString(1, loginId);
+			pstmt.setString(1, dto.getLoginId());
 			result = pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
+			
 			close(pstmt);
 		}
-		System.out.println("[Member Dao delete] return:" + result);
+		System.out.println(dto.getLoginId()+ "를 삭제했습니다.");
+		
+		// 회원탈퇴 성공시 result = 1
+		// 실패시 0 or -1
 		return result;
 	}
 
-    
-    
+	public boolean serchId(String loginId) {
+		getConnection();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean flag = false;
+		try {
+			String qurey = "select loginId from MEMBER where loginId=?";
+			pstmt = conn.prepareStatement(qurey);
+			pstmt.setString(1, loginId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				flag = true; //테이블에 존재하면 true
+			}
+		}catch (SQLException e) {
+			System.out.println("sql문 실행중 오류발생");
+		}finally {
+			try {
+				//이렇게 null 비교를 해주고 모두 반환하면 더 완벽함
+				if(conn != null)
+					conn.close();
+				if(pstmt != null)
+					pstmt.close();
+			}catch (SQLException e) {
+				System.out.println("접속 종료 실패");
+			}
+			return flag;
+		}
+	}
     
     
     public MemberDTO login(Connection conn, String loginId, String loginPw) {

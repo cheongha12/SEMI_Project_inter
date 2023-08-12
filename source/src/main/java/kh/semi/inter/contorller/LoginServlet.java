@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("loginedInfo", member);
 			
 			// 경고창 띄우기 위한 방법 -1
-			//request.getSession().setAttribute("msg", loginId+"님 반갑습니다.");
+			request.getSession().setAttribute("msg", loginId+"님 반갑습니다.");
 			
 			response.sendRedirect(request.getContextPath() + "/main");// 로그인 성공 시 메인페이지로 이동
 

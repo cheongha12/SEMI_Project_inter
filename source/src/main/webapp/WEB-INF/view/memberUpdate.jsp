@@ -45,7 +45,12 @@
 				<td><input type="text" name="phone" value="${loginInfo.phone}"></td>
 			</tr>
 			<tr align="center">
-			<td colspan="3"><input type="submit" value="회원정보수정">&nbsp; <input type="submit" name="withdrawal" value="회원탈퇴"> &nbsp; <input type="reset" value="취소"></td>
+			<td colspan="3">
+				<input type="submit" value="회원정보수정">&nbsp; 
+				<input type="submit" name="withdrawal" value="회원탈퇴" onclick='return confirm("해당 아이디  ${loginInfo.loginId}를"+" 정말 삭제 하시겠습니까?")'
+				formaction="${pageContext.request.contextPath }/WithDrawal" /> &nbsp; 
+				<input type="reset" value="취소">
+			</td>
 			</tr>
 		</table>
 	</form>
