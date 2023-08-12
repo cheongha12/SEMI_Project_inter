@@ -1,7 +1,8 @@
 package kh.semi.inter.Service;
 
 import static kh.semi.inter.jdbc.JdbcTemplate.*;
-
+import static kh.test.jdbckh.common.jdbc.JdbcTemplate.close;
+import static kh.test.jdbckh.common.jdbc.JdbcTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.List;
@@ -32,6 +33,22 @@ public class MemberService {
 			List<MemberDTO> result = null;
 			Connection conn = getConnection();
 			result = dao.selectList(conn);
+			close(conn);
+			return result;
+		}
+	    
+
+		public int update(MemberDTO dto) {
+			int result = -1;
+			Connection conn = getConnection();
+			result = dao.update(conn,dto);
+			close(conn);
+			return result;
+		}
+		public int delete(String loginId){
+			int result = 0;
+			Connection conn = getConnection();
+			result = dao.delete(conn, loginId);
 			close(conn);
 			return result;
 		}

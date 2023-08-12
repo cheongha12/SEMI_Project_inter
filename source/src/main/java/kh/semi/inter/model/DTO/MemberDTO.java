@@ -13,10 +13,11 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	
-	public MemberDTO(String loginId, String loginPw) {
+	public MemberDTO(String loginId, String loginPw, String email) {
 		super();
 		this.loginId = loginId;
 		this.loginPw = loginPw;
+		this.email = email;
 	}
 	public MemberDTO() {
 		super();

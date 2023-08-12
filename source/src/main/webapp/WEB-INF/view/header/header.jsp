@@ -39,7 +39,7 @@
                   <a href="${pageContext.request.contextPath}/join">회원가입</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://tour.interpark.com/mypage/">마이페이지</a>
+                  <a href="${pageContext.request.contextPath}/myPage">마이페이지</a>
                   <div id="divHeaderMypage" class="gatewaySub" style="display: none;">
                   </div>
                 <!-- </li>

@@ -4,14 +4,18 @@ import static kh.semi.inter.jdbc.JdbcTemplate.*;
 
 import java.lang.reflect.Member;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import kh.semi.inter.jdbc.JdbcTemplate;
 import kh.semi.inter.model.DTO.MemberDTO;
+import oracle.jdbc.proxy.annotation.Pre;
 
 public class MemberDAO {
     public int join(Connection conn, MemberDTO dto) {
@@ -36,7 +40,7 @@ public class MemberDAO {
 
     public int update(Connection conn, MemberDTO dto) {
 		PreparedStatement pstmt = null;
-		String qurey = "update set loginPw=?, name=?, email=?, phone=? where loginId=?";
+		String qurey = "update MEMBER set loginPw=?, name=?, email=?, phone=? where loginId=?";
 		ResultSet rs = null;
 		int result = -1;
 		
@@ -45,8 +49,8 @@ public class MemberDAO {
 			pstmt.setString(1, dto.getLoginPw());
 			pstmt.setString(2, dto.getName());
 			pstmt.setString(3, dto.getEmail());
-			pstmt.setString(5, dto.getPhone());
-			pstmt.setString(6, dto.getLoginId());
+			pstmt.setString(4, dto.getPhone());
+			pstmt.setString(5, dto.getLoginId());
 			
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -57,7 +61,26 @@ public class MemberDAO {
 		
 		return result;
 	}   
-    
+    public int delete(Connection conn, String loginId) {
+		System.out.println("[Member Dao delete] bno:" + loginId);
+		String qurey = "DELETE FROM MEMBER WHERE LOGIN_ID = ? ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(qurey);
+			pstmt.setString(1, loginId);
+			result = pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		System.out.println("[Member Dao delete] return:" + result);
+		return result;
+	}
+
     
     
     
@@ -76,7 +99,8 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				member = new MemberDTO(rs.getString("LOGINID"), rs.getString("LOGINPW"));
+				member = new MemberDTO(rs.getString("LOGINID"), rs.getString("LOGINPW"),rs.getString("name"),
+						rs.getString("email"),rs.getString("phone"));
 			}
 
 		} catch (Exception e) {
