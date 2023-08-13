@@ -84,35 +84,33 @@ public class MemberDAO {
 		return result;
 	}
 
-	public boolean serchId(String loginId) {
-		getConnection();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean flag = false;
-		try {
-			String qurey = "select loginId from MEMBER where loginId=?";
-			pstmt = conn.prepareStatement(qurey);
-			pstmt.setString(1, loginId);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				flag = true; //테이블에 존재하면 true
-			}
-		}catch (SQLException e) {
-			System.out.println("sql문 실행중 오류발생");
-		}finally {
-			try {
-				//이렇게 null 비교를 해주고 모두 반환하면 더 완벽함
-				if(conn != null)
-					conn.close();
-				if(pstmt != null)
-					pstmt.close();
-			}catch (SQLException e) {
-				System.out.println("접속 종료 실패");
-			}
-			return flag;
-		}
-	}
+    public boolean checkIdExist(String loginId) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean isExist = false;
+
+        try {
+            conn = getConnection(); // 데이터베이스 연결
+            String query = "SELECT COUNT(*) FROM member WHERE loginid = ?";
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, loginId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                isExist = (count > 0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(rs);
+            close(pstmt);
+            close(conn);
+        }
+
+        return isExist;
+    }
     
     
     public MemberDTO login(Connection conn, String loginId, String loginPw) {
