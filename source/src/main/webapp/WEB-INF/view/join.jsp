@@ -14,16 +14,41 @@
 <body>
 <jsp:include page="/WEB-INF/view/msg.jsp"/>
 
-<h2>회원 가입</h2>
-<form action="${pageContext.request.contextPath }/join" method="post">
-    아이디: <input type="text" name="loginId">
+<h2 class="header">회원 가입</h2>
+
+<form action="${pageContext.request.contextPath }/join" method="post" class="joinup">
+	<div class="flex">
+	<div class="textfield">아이디: </div>
+	<input type="text" name="loginId" >
+	
     <span id="id_message"></span>
+    
     <button type="button" class="id_check" name="id_check" >중복 체크</button><br>
-    비밀번호: <input type="password" name="loginPw"><br>
-    이름: <input type="text" name="name"><br>
-    이메일: <input type="email" name="email"><br>
-    전화번호: <input type="text" name="phone"><br>
-    <input type="submit" value="가입">
+    </div>
+    
+    <div class="flex">
+    <div class="textfield">비밀번호: </div>
+    <input type="password" name="loginPw"><br>
+    </div>
+    
+    <div class="flex">
+    <div class="textfield">이름  : </div>
+    <input type="text" name="name"><br>
+    </div>
+    
+    <div class= "flex">
+    <div class="textfield">이메일 : </div>
+    <input type="email" name="email"><br>
+    </div>
+    
+    <div class= "flex">
+    <div class="textfield">전화번호: </div>
+    <input type="text" name="phone"><br>
+    </div>
+    
+    <div class="btn">
+    <input type="submit" value="가입" class="join">
+	</div> 
 </form>
 
 <script>

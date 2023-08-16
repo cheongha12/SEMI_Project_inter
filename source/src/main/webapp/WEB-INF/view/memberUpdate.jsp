@@ -22,7 +22,7 @@
 
 
 
-	<form method="post" action="${pageContext.request.contextPath }/memberupdate" name="frm">
+	<form method="post" action="${pageContext.request.contextPath }/memberupdate" name="frm" class="update">
 
 	<%-- <form method="post" name="withdrawal" action="${pageContext.request.contextPath }/WithDrawal" name="frm"> --%>
 

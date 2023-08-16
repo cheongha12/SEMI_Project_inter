@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+ .joinup{
+	margin: auto;
+	width: 850px;
+	text-align: center;
+	padding: 50px;
+	align-items: center;
+	margin-left: 600px;
+	
+	
+}
+
+.header{
+	align-items: center;
+	margin-left: 800px;
+}
+
+.join {
+	height: 30;
+	width: 40;
+	margin-left:0px;
+}
+
+.btn{
+	width: 400px;
+}
+
+.id_check{
+	
+	
+	text-align: right;
+	position: static;
+	
+}
+
+.textfield{
+	width: 100px;
+}
+
+.flex{
+	display: flex;
+	margin: auto auto;
+	gap: 10px;
+	
+}

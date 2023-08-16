@@ -1,5 +1,7 @@
 <link href="${pageContext.request.contextPath }/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/join.css" rel="stylesheet">
+
 <link href="${pageContext.request.contextPath }/resources/css/footer.css" rel="stylesheet">
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

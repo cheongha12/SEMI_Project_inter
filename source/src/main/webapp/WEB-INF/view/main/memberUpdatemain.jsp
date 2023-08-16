@@ -1,5 +1,6 @@
 <link href="${pageContext.request.contextPath }/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/memberupdate.css" rel="stylesheet">
 
 <link href="${pageContext.request.contextPath }/resources/css/footer.css" rel="stylesheet">
 

@@ -1,6 +1,7 @@
 <link href="${pageContext.request.contextPath }/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/boby.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/mainlogin.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/footer.css" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -29,13 +30,13 @@
 
 <jsp:include page="/WEB-INF/view/header/header.jsp"/>
  
-	<h1>로그인</h1>
-    <form action="<%=request.getContextPath() %>/login" method="post">
-        아이디: <input type="text" name="loginId"><br>
-        비밀번호: <input type="password" name="loginPw"><br>
+	<h1 class="login2">로그인</h1>
+    <form action="<%=request.getContextPath() %>/login" method="post" class="login" >
+        아이디  : <input type="text" name="loginId" ><br>
+        비밀번호: <input type="password" name="loginPw" ><br>
         <input type="submit" value="로그인">
     </form>
-    <form action="<%=request.getContextPath() %>/join" method="get">
+    <form action="<%=request.getContextPath() %>/join" method="get" class="login1" >
         <input type="submit" value="회원가입" >
     </form>
     
