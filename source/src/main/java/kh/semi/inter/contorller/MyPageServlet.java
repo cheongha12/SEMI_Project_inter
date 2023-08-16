@@ -34,7 +34,7 @@ public class MyPageServlet extends HttpServlet {
 		request.setAttribute("email1",email1);
 		request.setAttribute("email2",email2);
 		
-		request.getRequestDispatcher("/WEB-INF/view/memberUpdate.jsp").forward(request, response);   
+		request.getRequestDispatcher("/WEB-INF/view/main/memberUpdatemain.jsp").forward(request, response);   
 	}
 	
 

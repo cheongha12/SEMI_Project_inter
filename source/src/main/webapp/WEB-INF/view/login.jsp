@@ -28,7 +28,7 @@
 <jsp:include page="/WEB-INF/view/msg.jsp"/>
 
 <jsp:include page="/WEB-INF/view/header/header.jsp"/>
-<%-- 
+ 
 	<h1>로그인</h1>
     <form action="<%=request.getContextPath() %>/login" method="post">
         아이디: <input type="text" name="loginId"><br>
@@ -38,34 +38,7 @@
     <form action="<%=request.getContextPath() %>/join" method="get">
         <input type="submit" value="회원가입" >
     </form>
- --%>    
-<form action="<%=request.getContextPath() %>/login" method="post">
-  <!-- Email input -->
-  <div class="form-outline mb-2">
-    <input type="text" id="form2Example1" class="form-control" name="loginId" />
-    <label class="form-label" for="form2Example1">ID</label>
-  </div>
-
-  <!-- Password input -->
-  <div class="form-outline mb-2">
-    <input type="password" id="form2Example2" class="form-control" name="loginPw" />
-    <label class="form-label" for="form2Example2">Password</label>
-  </div>
-
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    <div class="col">
-      <!-- Simple link -->
-      <a href="#!">Forgot password?</a>
-    </div>
-  </div>
-
-  <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">로그인</button>
-</form>
-    <form action="<%=request.getContextPath() %>/join" method="get">
-        <input type="submit" value="회원가입" >
-    </form>
+    
 
 <jsp:include page="/WEB-INF/view/footer/footer.jsp"/>
 

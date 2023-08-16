@@ -30,7 +30,7 @@ public class JoinServlet extends HttpServlet {
 			request.setAttribute("msg", msg);
 		}
 
-		request.getRequestDispatcher("/WEB-INF/view/join.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/main/joinmain.jsp").forward(request, response);
 
 	}
 
