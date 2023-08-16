@@ -35,6 +35,8 @@
 
 ### login
 ![login](https://github.com/cheongha12/inter/assets/135290566/5c93c042-fff8-4ebc-bd4f-a942040b6d1a)
+### logout
+![logout](https://github.com/cheongha12/inter/assets/135290566/075ecd3e-8b77-46a0-aa3b-6a030da53feb)
 
 ### join
 ![join](https://github.com/cheongha12/inter/assets/135290566/26d4687e-f910-4c1c-b065-38e64b3befc7)
@@ -49,6 +51,11 @@
 ![회원정보수정](https://github.com/cheongha12/inter/assets/135290566/d383dbb5-46b5-41e5-81ca-40bb434cf37a)
 
 ![회원정보수정2](https://github.com/cheongha12/inter/assets/135290566/0aacfbba-6bb5-4059-a4ea-95a3fc2f7823)
+
+### WithDrawal
+![회원탈퇴](https://github.com/cheongha12/inter/assets/135290566/53cd3cbe-1511-4998-b413-d20640d17996)
+![회원탈퇴2](https://github.com/cheongha12/inter/assets/135290566/f1cdd15f-93dc-43cc-a220-9d5e02026a70)
+![회원탈퇴3](https://github.com/cheongha12/inter/assets/135290566/feba85cd-e093-4333-b884-369d9216a863)
 
 
 -
