@@ -13,6 +13,9 @@ import java.util.List;
 
 import javax.naming.spi.DirStateFactory.Result;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import kh.semi.inter.jdbc.JdbcTemplate;
 import kh.semi.inter.model.DTO.MemberDTO;
 import oracle.jdbc.proxy.annotation.Pre;
@@ -112,6 +115,14 @@ public class MemberDAO {
         return isExist;
     }
     
+    private SqlSessionFactory sqlSessionFactory;
+    
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+    	
+
+    
     
     public MemberDTO login(Connection conn, String loginId, String loginPw) {
 		System.out.println("[MemberDAO login ] loginId:"+loginId+", loginPw:"+ loginPw);
@@ -127,8 +138,12 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				member = new MemberDTO(rs.getString("LOGINID"), rs.getString("LOGINPW"),rs.getString("name"),
-						rs.getString("email"),rs.getString("phone"));
+				member = new MemberDTO(rs.getString("LOGINID"),
+						rs.getString("LOGINPW"),
+						rs.getString("name"),
+						rs.getString("email"),
+						rs.getString("phone")
+						);
 			}
 
 		} catch (Exception e) {
@@ -169,6 +184,8 @@ public class MemberDAO {
 		System.out.println("[Member Dao selectList] return:" + result);
 		return result;
 	}
+	
+	
 }
 	
 	
