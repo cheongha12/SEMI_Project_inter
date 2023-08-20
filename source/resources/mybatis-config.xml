@@ -7,7 +7,7 @@
 </settings>
 
 <typeAliases>
-	<typeAlias type="kh.semi.inter.common.model.DTO.MemberDTO" alias="MemberDTO1"/>
+	<typeAlias type="kh.semi.inter.model.DTO.MemberDTO" alias="MemberDTO1"/>
 
 </typeAliases>
 
@@ -24,6 +24,6 @@
 </environments>
 
 <mappers>
- <mapper resource="/resources/mybatis-mapper.xml"/>
+ <mapper resource="mybatis-mapper.xml"/>
 </mappers>
 </configuration>

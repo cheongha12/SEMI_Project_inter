@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper>
-  
+<mapper namespace="memberResultMap1">
+<resultMap type="MemberDTO1" id="MemberResultMap1">
+<id property="loginId" column="LOGINID"/>
+<result property="loginPw" column="LOGINPW"/>
+<result property="name" column="NAME"/>
+<result property="email" column="EMAIL"/>
+<result property="phone" column="PHONE"/>
+
+
+</resultMap> 
+<select id="selectinter1" resultType="MemberDTO1" parameterType="string">
+select * from MEMBER where loginId=#{loginId}
+</select>
+<select id="selectOneinter1" resultType="MemberDTO1" parameterType="string">
+select loginId,loginPw,name,email,phone from MEMBER where loginId=#{loginId}
+</select>
+<insert id="inter" parameterType="MemberDTO1">
+INSERT INTO MEMBER VALUES(#{loginId},#{loginPw},#{name},#{email},#{phone})
+</insert>
+<update id="inter1" parameterType="MemberDTO1">
+update MEMBER set loginPw=#{loginPw}, name=#{name},email=#{email},phone=#{phone} where loginId = #{loginId}
+</update>
 </mapper>

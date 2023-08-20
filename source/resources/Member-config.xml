@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+<settings>
+<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+
+<typeAliases>
+<typeAlias type="kh.semi.inter.model.DTO.MemberDTO" alias="MemberDTO1"/>
+</typeAliases>
+<environments default="son1">
+    <environment id="son1">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+        <property name="username" value="inter"/>
+        <property name="password" value="inter1"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="mybatis-mapper.xml"/>
+  </mappers>
+</configuration>

@@ -21,27 +21,36 @@ import kh.semi.inter.model.DTO.MemberDTO;
 import oracle.jdbc.proxy.annotation.Pre;
 
 public class MemberDAO {
-    public int join(Connection conn, MemberDTO dto) {
-        int result = 0;
-		String query = "INSERT INTO MEMBER VALUES(?,?,?,?,?)";
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, dto.getLoginId());
-			pstmt.setString(2, dto.getLoginPw());
-			pstmt.setString(3, dto.getName());
-			pstmt.setString(4, dto.getEmail());
-			pstmt.setString(5, dto.getPhone());
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			JdbcTemplate.close(pstmt);
-		}
-        return result;
-    }
-
-    public int update(Connection conn, MemberDTO dto) {
+	
+	
+/*	public int join(SqlSession session, MemberDTO dto )
+	{
+		int result = 0;
+		result = session.insert("memberResultMap1.inter",dto);
+		return result;
+	}	*/
+	
+	public int join (SqlSession session , MemberDTO dto) {
+		int result = 0 ;
+		result = session.insert("memberResultMap1.inter",dto);
+		return result;
+	}
+	/*
+	 * public int join(Connection conn, MemberDTO dto) { int result = 0; String
+	 * query = "INSERT INTO MEMBER VALUES(?,?,?,?,?)"; PreparedStatement pstmt =
+	 * null; try { pstmt = conn.prepareStatement(query); pstmt.setString(1,
+	 * dto.getLoginId()); pstmt.setString(2, dto.getLoginPw()); pstmt.setString(3,
+	 * dto.getName()); pstmt.setString(4, dto.getEmail()); pstmt.setString(5,
+	 * dto.getPhone()); result = pstmt.executeUpdate(); } catch (Exception e) {
+	 * e.printStackTrace(); }finally { JdbcTemplate.close(pstmt); } return result; }
+	 */
+	public int update(SqlSession session, MemberDTO dto) {
+		int result = -1;
+		result = session.update("memberResultMap1.inter1",dto);
+		return result;
+	}
+	
+ /*   public int update(Connection conn, MemberDTO dto) {
 		PreparedStatement pstmt = null;
 		String qurey = "update MEMBER set loginPw=?, name=?, email=?, phone=? where loginId=?";
 		ResultSet rs = null;
@@ -63,7 +72,9 @@ public class MemberDAO {
 		}
 		
 		return result;
-	}   
+	}   */
+    
+    
     public int delete(Connection conn, MemberDTO dto) {
 		System.out.println("[Member Dao delete] bno:" + dto.getLoginId());
 		String qurey = "DELETE FROM MEMBER WHERE loginId = ? ";
@@ -85,7 +96,7 @@ public class MemberDAO {
 		// 회원탈퇴 성공시 result = 1
 		// 실패시 0 or -1
 		return result;
-	}
+	} 
 
     public boolean checkIdExist(String loginId) {
         Connection conn = null;

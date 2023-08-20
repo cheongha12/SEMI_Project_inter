@@ -6,7 +6,10 @@ import static kh.semi.inter.jdbc.JdbcTemplate.getConnection;
 import java.sql.Connection;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import kh.semi.inter.jdbc.JdbcTemplate;
+import kh.semi.inter.jdbc.MyBatisTemplate;
 import kh.semi.inter.model.DAO.MemberDAO;
 import kh.semi.inter.model.DTO.MemberDTO;
 
@@ -14,12 +17,24 @@ import kh.semi.inter.model.DTO.MemberDTO;
 public class MemberService {
 	 private MemberDAO dao = new MemberDAO();
 
-	    public int join(MemberDTO dto) {
-	    	Connection conn = JdbcTemplate.getConnection();
-	        int result = dao.join(conn, dto);
-	        JdbcTemplate.close(conn);
-	        return result;
-	    }
+/*	 public int join(MemberDTO dto) {
+		 int result = 0;
+		 SqlSession session = MyBatisTemplate.getSqlSession();
+		 result = dao.join(session, dto);
+		 return result;
+	 } */
+	 
+	public int join(MemberDTO dto) {
+		int result = 0;
+		SqlSession session = MyBatisTemplate.getSqlSession();
+		result = dao.join(session, dto);
+		return result;
+	}
+		/*
+		 * public int join(MemberDTO dto) { Connection conn =
+		 * JdbcTemplate.getConnection(); int result = dao.join(conn, dto);
+		 * JdbcTemplate.close(conn); return result; }
+		 */
 	    
 	    public MemberDTO login(String loginId, String loginPw) {
 	    	Connection conn = JdbcTemplate.getConnection();
@@ -35,15 +50,20 @@ public class MemberService {
 			close(conn);
 			return result;
 		}
-	    
+	 public int update(MemberDTO dto) {
+		 int result = -1;
+		 SqlSession session = MyBatisTemplate.getSqlSession();
+		 result = dao.update(session, dto);
+		 return result;
+	 }
 
-		public int update(MemberDTO dto) {
+/*		public int update(MemberDTO dto) {
 			int result = -1;
 			Connection conn = getConnection();
 			result = dao.update(conn,dto);
 			close(conn);
 			return result;
-		}
+		} */
 		public int delete(MemberDTO dto){
 			int result = 0;
 			Connection conn = getConnection();

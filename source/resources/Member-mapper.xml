@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper>
+  <cache-ref namespace="memberResultMap1"/>
+  <resultMap type="MemberDTO1" id="memberResultMap1">
+  <id property="loginId" column="LOGINID"/>
+  <result property="loginPw" column="LOGINPW"/>
+  <result property="name" column="NAME"/>
+  <result property="email" column="EMAIL"/>
+  <result property="phone" column="PHONE"/>
+  </resultMap>
+  
+  <select id="selectmember1" resultType="MemberDTO1" parameterType="String">
+  select * from MEMBER where loginId=#{loginId}
+  </select>
+</mapper>
